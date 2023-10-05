@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@next-auth/upstash-redis-adapter':
+    specifier: ^3.0.4
+    version: 3.0.4(@upstash/redis@1.22.1)(next-auth@4.23.2)
   '@upstash/redis':
     specifier: ^1.22.1
     version: 1.22.1
@@ -166,6 +169,17 @@ packages:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
+
+  /@next-auth/upstash-redis-adapter@3.0.4(@upstash/redis@1.22.1)(next-auth@4.23.2):
+    resolution: {integrity: sha512-az9hFemtnSry7YAaVvxPEwGZSbnK8xiRLX/C5bDsM1ibQWSx6aIp7QY3Kk4NSdqU6LONkXnjndKKhrUnwEmfFw==}
+    peerDependencies:
+      '@upstash/redis': ^1.0.1
+      next-auth: ^4
+    dependencies:
+      '@upstash/redis': 1.22.1
+      next-auth: 4.23.2(next@13.5.4)(react-dom@18.2.0)(react@18.2.0)
+      uuid: 8.3.2
+    dev: false
 
   /@next/env@13.5.4:
     resolution: {integrity: sha512-LGegJkMvRNw90WWphGJ3RMHMVplYcOfRWf2Be3td3sUa+1AaxmsYyANsA+znrGCBjXJNi4XAQlSoEfUxs/4kIQ==}
