@@ -1,5 +1,5 @@
-import { db } from '@/lib/db'
+import Button from '@/components/ui/Button'
 
 export default async function Home() {
-  return <h1 className="text-red-500">Hello</h1>
+  return <Button variant={'ghost'}>I am a Button</Button>
 }
