@@ -2,6 +2,7 @@
 
 import GoogleLogo from '@/components/logo/GoogleLogo'
 import Button from '@/components/ui/Button'
+import { signIn } from 'next-auth/react'
 import React, { useState } from 'react'
 
 type Props = {}
@@ -10,7 +11,14 @@ const Login = (props: Props) => {
   const [loading, setLoading] = useState<boolean>(false)
 
   async function loginWithGoogle() {
-    console.log('hehe!!')
+    setLoading(true)
+    try {
+      await signIn('google')
+    } catch (error) {
+      // display error message
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -30,7 +38,8 @@ const Login = (props: Props) => {
             className="max-w-sm mx-auto w-full"
             onClick={loginWithGoogle}
           >
-            <GoogleLogo /> Google
+            {loading ? null : <GoogleLogo />}
+            Google
           </Button>
         </div>
       </div>
