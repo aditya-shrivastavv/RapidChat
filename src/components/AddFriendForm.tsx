@@ -1,11 +1,36 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import Button from './ui/Button'
+import { validateEmail } from '@/lib/validations/add-friend'
+import axios, { AxiosError } from 'axios'
+import z from 'zod'
 
 type Props = {}
 
 const AddFriendForm = (props: Props) => {
+  const [showSuccess, setShowSuccess] = useState<boolean>(false)
+
+  const addFriend = async (email: string) => {
+    try {
+      const validatedEmail = validateEmail.parse({ email })
+
+      await axios.post('/api/friends/add', {
+        email: validatedEmail
+      })
+
+      setShowSuccess(true)
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return
+      }
+
+      if (error instanceof AxiosError) {
+        return
+      }
+    }
+  }
+
   return (
     <form className="max-w-sm">
       <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
