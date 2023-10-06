@@ -1,5 +1,5 @@
 import { z } from 'zod'
 
-export const validateEmail = z.object({
+export const addFriendValidator = z.object({
   email: z.string().email()
 })

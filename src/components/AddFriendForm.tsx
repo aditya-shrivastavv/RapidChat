@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import Button from './ui/Button'
-import { validateEmail } from '@/lib/validations/add-friend'
+import { addFriendValidator } from '@/lib/validations/add-friend'
 import axios, { AxiosError } from 'axios'
 import z from 'zod'
 import { useForm } from 'react-hook-form'
@@ -10,17 +10,17 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 type Props = {}
 
-type FormData = z.infer<typeof validateEmail>
+type FormData = z.infer<typeof addFriendValidator>
 
 const AddFriendForm = (props: Props) => {
   const [showSuccessState, setShowSuccessState] = useState<boolean>(false)
   const { register, handleSubmit, setError, formState } = useForm<FormData>({
-    resolver: zodResolver(validateEmail)
+    resolver: zodResolver(addFriendValidator)
   })
 
   const addFriend = async (email: string) => {
     try {
-      const validatedEmail = validateEmail.parse({ email })
+      const validatedEmail = addFriendValidator.parse({ email })
 
       await axios.post('/api/friends/add', {
         email: validatedEmail
