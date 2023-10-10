@@ -22,11 +22,11 @@ const FriendRequestSidebarOptions = ({ sessionId, initialUnseenRequestCount }: P
       </div>
       <p className="truncate">Friend requests</p>
 
-      {unseenRequestCount && (
+      {unseenRequestCount > 0 ? (
         <div className="rounded-full w-5 h-5 text-xs flex justify-center items-center text-white bg-indigo-600">
           {unseenRequestCount}
         </div>
-      )}
+      ) : null}
     </Link>
   )
 }
