@@ -1,3 +1,4 @@
+import Messages from '@/components/Messages'
 import { fetchRedis } from '@/helpers/redis'
 import { authOptions } from '@/lib/auth'
 import { db } from '@/lib/db'
@@ -70,6 +71,8 @@ const Chat = async ({ params }: Props) => {
           </div>
         </div>
       </div>
+
+      <Messages sessionId={session.user.id} initialMessages={initialMessages} />
     </div>
   )
 }
