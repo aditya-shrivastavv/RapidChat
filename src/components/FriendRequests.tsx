@@ -19,10 +19,8 @@ const FriendRequests = ({ incomingFriendRequests, sessionId }: Props) => {
 
   useEffect(() => {
     pusherClient.subscribe(pusherCompatible(`user:${sessionId}:incoming_friend_requests`))
-    console.log('listening to ', `user:${sessionId}:incoming_friend_requests`)
-
-    function friendRequestHandler() {
-      console.log('new friend request')
+    function friendRequestHandler({ senderId, senderEmail }: IncomingFriendRequests) {
+      setFriendRequests((prev) => [...prev, { senderId, senderEmail }])
     }
 
     pusherClient.bind('incoming_friend_requests', friendRequestHandler)

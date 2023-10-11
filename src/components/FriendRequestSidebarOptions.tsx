@@ -1,8 +1,10 @@
 'use client'
 
+import { pusherClient } from '@/lib/pusher'
+import { pusherCompatible } from '@/lib/utils'
 import { User } from 'lucide-react'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 type Props = {
   sessionId: string
@@ -10,7 +12,31 @@ type Props = {
 }
 
 const FriendRequestSidebarOptions = ({ sessionId, initialUnseenRequestCount }: Props) => {
-  const [unseenRequestCount, setunseenRequestCount] = useState<number>(initialUnseenRequestCount)
+  const [unseenRequestCount, setUnseenRequestCount] = useState<number>(initialUnseenRequestCount)
+
+  useEffect(() => {
+    pusherClient.subscribe(pusherCompatible(`user:${sessionId}:incoming_friend_requests`))
+    // pusherClient.subscribe(pusherCompatible(`user:${sessionId}:friends`))
+
+    const friendRequestHandler = () => {
+      setUnseenRequestCount((prev) => prev + 1)
+    }
+
+    // const addedFriendHandler = () => {
+    //   setUnseenRequestCount((prev) => prev - 1)
+    // }
+
+    pusherClient.bind('incoming_friend_requests', friendRequestHandler)
+    // pusherClient.bind('new_friend', addedFriendHandler)
+
+    return () => {
+      pusherClient.unsubscribe(pusherCompatible(`user:${sessionId}:incoming_friend_requests`))
+      // pusherClient.unsubscribe(pusherCompatible(`user:${sessionId}:friends`))
+
+      // pusherClient.unbind('new_friend', addedFriendHandler)
+      pusherClient.unbind('incoming_friend_requests', friendRequestHandler)
+    }
+  }, [])
 
   return (
     <Link
