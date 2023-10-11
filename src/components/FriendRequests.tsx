@@ -19,6 +19,7 @@ const FriendRequests = ({ incomingFriendRequests, sessionId }: Props) => {
 
   useEffect(() => {
     pusherClient.subscribe(pusherCompatible(`user:${sessionId}:incoming_friend_requests`))
+    console.log('listening to ', `user:${sessionId}:incoming_friend_requests`)
 
     function friendRequestHandler() {
       console.log('new friend request')
@@ -30,7 +31,7 @@ const FriendRequests = ({ incomingFriendRequests, sessionId }: Props) => {
       pusherClient.unsubscribe(pusherCompatible(`user:${sessionId}:incoming_friend_requests`))
       pusherClient.unbind('incoming_friend_requests', friendRequestHandler)
     }
-  })
+  }, [])
 
   const acceptFriend = async (senderId: string) => {
     await axios.post('/api/friends/accept', {
