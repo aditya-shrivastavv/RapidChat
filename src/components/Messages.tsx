@@ -38,7 +38,7 @@ const Messages = ({ initialMessages, sessionId }: Props) => {
                   className={cn('px-4 py-2 rounded-lg inline-block', {
                     'bg-indigo-600 text-white': isCurrentUser,
                     'bg-gray-200 text-gray-900': !isCurrentUser,
-                    'rounded-br-none': hasNextMessageFromTheSameUser && isCurrentUser,
+                    'rounded-br-none': !hasNextMessageFromTheSameUser && isCurrentUser,
                     'rounded-bl-none': !hasNextMessageFromTheSameUser && !isCurrentUser
                   })}
                 >
