@@ -46,9 +46,12 @@ const Layout = async ({ children }: Props) => {
           unseenRequestCount={unseenRequestCount}
         />
       </div>
-      <div className="hidden md:flex h-full w-full max-w-xs grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pt-2">
-        <Link href="/dashboard" className="flex h-10 shrink-0 items-center">
-          <Icons.Logo className="h-8 w-auto text-indigo-600" />
+      <div className="hidden md:flex h-full w-full max-w-xs grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pt-4">
+        <Link href="/dashboard" className="flex h-10 shrink-0 items-center group">
+          <h2 className="text-xl italic mr-2 font-bold group-hover:mr-4 group-hover:ml-2 transition-all">
+            RapidChat
+          </h2>
+          <Icons.Logo />
         </Link>
 
         {friends.length > 0 && (
