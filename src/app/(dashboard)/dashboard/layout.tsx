@@ -45,6 +45,7 @@ const Layout = async ({ children }: Props) => {
           sidebarOptions={sidebarOptions}
           unseenRequestCount={unseenRequestCount}
         />
+        div
       </div>
       <div className="hidden md:flex h-full w-full max-w-xs grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pt-4">
         <Link href="/dashboard" className="flex h-10 shrink-0 items-center group">
@@ -118,7 +119,10 @@ const Layout = async ({ children }: Props) => {
         </nav>
       </div>
 
-      <aside className="max-h-screen pb-4 pt-16 md:pt-0 w-full">{children}</aside>
+      <aside className="max-h-screen pb-4 pt-16 md:pt-0 w-full">
+        <div className="h-7 bg-indigo-400 text-white px-4">Made with ❤️ by Aditya Shrivastav</div>
+        {children}
+      </aside>
     </div>
   )
 }
