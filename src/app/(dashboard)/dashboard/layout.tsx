@@ -1,10 +1,12 @@
 import FriendRequestSidebarOptions from '@/components/FriendRequestSidebarOptions'
+import MobileChatLayout from '@/components/MobileChatLayout'
 import SidebarChatList from '@/components/SidebarChatList'
 import SignOutButton from '@/components/SignOutButton'
 import { Icon, Icons } from '@/components/logo/Icons'
 import { getFriendsByUserId } from '@/helpers/get-friends-by-user-id'
 import { fetchRedis } from '@/helpers/redis'
 import { authOptions } from '@/lib/auth'
+import { SidebarOptions } from '@/types/typings'
 import { getServerSession } from 'next-auth'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -13,13 +15,6 @@ import React from 'react'
 
 type Props = {
   children: React.ReactNode
-}
-
-interface SidebarOptions {
-  id: number
-  name: string
-  href: string
-  Icon: Icon
 }
 
 const sidebarOptions: SidebarOptions[] = [
@@ -43,7 +38,15 @@ const Layout = async ({ children }: Props) => {
 
   return (
     <div className="w-full flex h-screen">
-      <div className="flex h-full w-full max-w-xs grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pt-2">
+      <div className="md:hidden">
+        <MobileChatLayout
+          friends={friends}
+          session={session}
+          sidebarOptions={sidebarOptions}
+          unseenRequestCount={unseenRequestCount}
+        />
+      </div>
+      <div className="hidden md:flex h-full w-full max-w-xs grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pt-2">
         <Link href="/dashboard" className="flex h-10 shrink-0 items-center">
           <Icons.Logo className="h-8 w-auto text-indigo-600" />
         </Link>
