@@ -52,10 +52,10 @@ const Chat = async ({ params }: Props) => {
 
   return (
     <div className="flex-1 justify-between flex flex-col h-full max-h-[cal(100vh-6rem)]">
-      <div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
+      <div className="flex sm:items-center justify-between p-3 border-b-2 border-gray-200">
         <div className="relative flex items-center space-x-4">
           <div className="relative">
-            <div className="relative w-8 sm:w-12 sm:h-12">
+            <div className="relative w-12 h-12">
               <Image
                 fill
                 referrerPolicy="no-referrer"
