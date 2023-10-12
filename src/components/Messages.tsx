@@ -32,7 +32,7 @@ const Messages = ({ initialMessages, sessionId, sessionImg, chatPartner, chatId 
       pusherClient.unsubscribe(pusherCompatible(`chat:${chatId}`))
       pusherClient.unbind('incoming-message', messageHandler)
     }
-  }, [])
+  }, [chatId])
 
   const formatTimestamp = (timestamp: number) => {
     return format(timestamp, 'HH:mm')

@@ -36,7 +36,7 @@ const FriendRequestSidebarOptions = ({ sessionId, initialUnseenRequestCount }: P
       // pusherClient.unbind('new_friend', addedFriendHandler)
       pusherClient.unbind('incoming_friend_requests', friendRequestHandler)
     }
-  }, [])
+  }, [sessionId])
 
   return (
     <Link
