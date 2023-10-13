@@ -1,12 +1,12 @@
 'use client'
 
-import React, { useState } from 'react'
-import Button from './ui/Button'
 import { addFriendValidator } from '@/lib/validations/add-friend'
-import axios, { AxiosError } from 'axios'
-import z from 'zod'
-import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import axios, { AxiosError } from 'axios'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import z from 'zod'
+import Button from './ui/Button'
 
 type Props = {}
 

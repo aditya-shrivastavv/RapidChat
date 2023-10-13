@@ -1,18 +1,18 @@
 'use client'
 
-import { Transition, Dialog } from '@headlessui/react'
+import { SidebarOptions } from '@/types/typings'
+import { Dialog, Transition } from '@headlessui/react'
 import { Menu, X } from 'lucide-react'
+import { Session } from 'next-auth'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Fragment, useEffect, useState } from 'react'
-import SignOutButton from './SignOutButton'
-import Button, { buttonVariants } from './ui/Button'
 import FriendRequestSidebarOptions from './FriendRequestSidebarOptions'
 import SidebarChatList from './SidebarChatList'
-import { Session } from 'next-auth'
-import { usePathname } from 'next/navigation'
+import SignOutButton from './SignOutButton'
 import { Icons } from './logo/Icons'
-import { SidebarOptions } from '@/types/typings'
+import Button, { buttonVariants } from './ui/Button'
 
 interface MobileChatLayoutProps {
   friends: User[]

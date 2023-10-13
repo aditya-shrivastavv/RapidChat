@@ -4,10 +4,9 @@ import { authOptions } from '@/lib/auth'
 import { chatHrefConstructor } from '@/lib/utils'
 import { ChevronRight } from 'lucide-react'
 import { getServerSession } from 'next-auth'
+import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import React from 'react'
-import Image from 'next/image'
 
 type Props = {}
 

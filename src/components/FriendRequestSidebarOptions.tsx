@@ -4,7 +4,7 @@ import { pusherClient } from '@/lib/pusher'
 import { pusherCompatible } from '@/lib/utils'
 import { User } from 'lucide-react'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 type Props = {
   sessionId: string

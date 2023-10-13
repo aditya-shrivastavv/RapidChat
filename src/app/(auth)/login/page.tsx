@@ -3,7 +3,7 @@
 import GoogleLogo from '@/components/logo/GoogleLogo'
 import Button from '@/components/ui/Button'
 import { signIn } from 'next-auth/react'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import toast from 'react-hot-toast'
 
 type Props = {}

@@ -1,11 +1,11 @@
 'use client'
 
+import { pusherClient } from '@/lib/pusher'
 import { cn, pusherCompatible } from '@/lib/utils'
 import { Message } from '@/lib/validations/message'
-import React, { useEffect, useRef, useState } from 'react'
 import { format } from 'date-fns'
 import Image from 'next/image'
-import { pusherClient } from '@/lib/pusher'
+import { useEffect, useRef, useState } from 'react'
 
 type Props = {
   initialMessages: Message[]

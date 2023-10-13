@@ -1,7 +1,6 @@
 import { chatHrefConstructor, cn } from '@/lib/utils'
-import React from 'react'
-import toast, { Toast } from 'react-hot-toast'
 import Image from 'next/image'
+import toast, { Toast } from 'react-hot-toast'
 
 type Props = {
   t: Toast

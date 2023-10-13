@@ -5,7 +5,7 @@ import { pusherCompatible } from '@/lib/utils'
 import axios from 'axios'
 import { Check, UserPlus, X } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 type Props = {
   incomingFriendRequests: IncomingFriendRequests[]

@@ -1,10 +1,10 @@
 'use client'
 
-import React, { ButtonHTMLAttributes, useState } from 'react'
-import Button from './ui/Button'
-import { signOut } from 'next-auth/react'
-import toast from 'react-hot-toast'
 import { Loader2, LogOut } from 'lucide-react'
+import { signOut } from 'next-auth/react'
+import { ButtonHTMLAttributes, useState } from 'react'
+import toast from 'react-hot-toast'
+import Button from './ui/Button'
 
 interface SignOutButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 

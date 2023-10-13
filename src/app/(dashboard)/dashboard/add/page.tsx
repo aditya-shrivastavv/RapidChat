@@ -1,5 +1,4 @@
 import AddFriendForm from '@/components/AddFriendForm'
-import React from 'react'
 
 type Props = {}
 

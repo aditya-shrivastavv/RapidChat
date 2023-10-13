@@ -1,10 +1,10 @@
 'use client'
 
-import React, { useRef, useState } from 'react'
+import axios from 'axios'
+import { useRef, useState } from 'react'
+import toast from 'react-hot-toast'
 import TextareaAutosize from 'react-textarea-autosize'
 import Button from './ui/Button'
-import axios from 'axios'
-import toast from 'react-hot-toast'
 
 type Props = {
   chatPartner: User
