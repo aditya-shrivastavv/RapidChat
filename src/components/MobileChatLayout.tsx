@@ -35,7 +35,7 @@ const MobileChatLayout = ({
   }, [pathname])
 
   return (
-    <div className="fixed bg-zinc-50 border-b border-zinc-200 top-0 inset-x-0 py-2 px-4">
+    <div className="fixed bg-zinc-50 border-b border-zinc-200 top-0 inset-x-0 py-3 px-4">
       <div className="w-full flex justify-between items-center">
         <Link href="/dashboard" className={buttonVariants({ variant: 'ghost' })}>
           <h2 className="text-lg italic mr-2 font-bold">RapidChat</h2>
