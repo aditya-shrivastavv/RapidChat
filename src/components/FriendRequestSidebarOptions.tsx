@@ -11,11 +11,18 @@ type Props = {
   initialUnseenRequestCount: number
 }
 
-const FriendRequestSidebarOptions = ({ sessionId, initialUnseenRequestCount }: Props) => {
-  const [unseenRequestCount, setUnseenRequestCount] = useState<number>(initialUnseenRequestCount)
+const FriendRequestSidebarOptions = ({
+  sessionId,
+  initialUnseenRequestCount
+}: Props) => {
+  const [unseenRequestCount, setUnseenRequestCount] = useState<number>(
+    initialUnseenRequestCount
+  )
 
   useEffect(() => {
-    pusherClient.subscribe(pusherCompatible(`user:${sessionId}:incoming_friend_requests`))
+    pusherClient.subscribe(
+      pusherCompatible(`user:${sessionId}:incoming_friend_requests`)
+    )
     pusherClient.subscribe(pusherCompatible(`user:${sessionId}:friends`))
 
     const friendRequestHandler = () => {
@@ -30,7 +37,9 @@ const FriendRequestSidebarOptions = ({ sessionId, initialUnseenRequestCount }: P
     pusherClient.bind('new_friend', addedFriendHandler)
 
     return () => {
-      pusherClient.unsubscribe(pusherCompatible(`user:${sessionId}:incoming_friend_requests`))
+      pusherClient.unsubscribe(
+        pusherCompatible(`user:${sessionId}:incoming_friend_requests`)
+      )
       pusherClient.unsubscribe(pusherCompatible(`user:${sessionId}:friends`))
 
       pusherClient.unbind('new_friend', addedFriendHandler)

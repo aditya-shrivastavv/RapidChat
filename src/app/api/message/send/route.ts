@@ -22,14 +22,20 @@ export async function POST(req: Request) {
 
     const friendId = session.user.id === userId1 ? userId2 : userId1
 
-    const friendList = (await fetchRedis('smembers', `user:${session.user.id}:friends`)) as string[]
+    const friendList = (await fetchRedis(
+      'smembers',
+      `user:${session.user.id}:friends`
+    )) as string[]
     const isFriend = friendList.includes(friendId)
 
     if (!isFriend) {
       return new Response('Unauthorized', { status: 401 })
     }
 
-    const rawSender = (await fetchRedis('get', `user:${session.user.id}`)) as string
+    const rawSender = (await fetchRedis(
+      'get',
+      `user:${session.user.id}`
+    )) as string
     const sender = JSON.parse(rawSender) as User
 
     const timestamp = Date.now()
@@ -43,13 +49,21 @@ export async function POST(req: Request) {
     const message = messageValidator.parse(messageData)
 
     // notify all connected chat room clients
-    await pusherServer.trigger(pusherCompatible(`chat:${chatId}`), 'incoming-message', message)
+    await pusherServer.trigger(
+      pusherCompatible(`chat:${chatId}`),
+      'incoming-message',
+      message
+    )
 
-    await pusherServer.trigger(pusherCompatible(`user:${friendId}:chats`), 'new_message', {
-      ...message,
-      senderImg: sender.image,
-      senderName: sender.name
-    })
+    await pusherServer.trigger(
+      pusherCompatible(`user:${friendId}:chats`),
+      'new_message',
+      {
+        ...message,
+        senderImg: sender.image,
+        senderName: sender.name
+      }
+    )
 
     // all valid send the message
     await db.zadd(`chat:${chatId}:messages`, {

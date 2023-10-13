@@ -37,7 +37,10 @@ const MobileChatLayout = ({
   return (
     <div className="fixed bg-zinc-50 border-b border-zinc-200 top-0 inset-x-0 py-3 px-4">
       <div className="w-full flex justify-between items-center">
-        <Link href="/dashboard" className={buttonVariants({ variant: 'ghost' })}>
+        <Link
+          href="/dashboard"
+          className={buttonVariants({ variant: 'ghost' })}
+        >
           <h2 className="text-lg italic mr-2 font-bold">RapidChat</h2>
           <Icons.Logo className="h-6 w-auto text-indigo-600" />
         </Link>
@@ -90,9 +93,15 @@ const MobileChatLayout = ({
                         ) : null}
 
                         <nav className="flex flex-1 flex-col">
-                          <ul role="list" className="flex flex-1 flex-col gap-y-7">
+                          <ul
+                            role="list"
+                            className="flex flex-1 flex-col gap-y-7"
+                          >
                             <li>
-                              <SidebarChatList friends={friends} sessionId={session.user.id} />
+                              <SidebarChatList
+                                friends={friends}
+                                sessionId={session.user.id}
+                              />
                             </li>
 
                             <li>
@@ -111,7 +120,9 @@ const MobileChatLayout = ({
                                         <span className="text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white">
                                           <Icon className="h-4 w-4" />
                                         </span>
-                                        <span className="truncate">{option.name}</span>
+                                        <span className="truncate">
+                                          {option.name}
+                                        </span>
                                       </Link>
                                     </li>
                                   )
@@ -119,7 +130,9 @@ const MobileChatLayout = ({
 
                                 <li>
                                   <FriendRequestSidebarOptions
-                                    initialUnseenRequestCount={unseenRequestCount}
+                                    initialUnseenRequestCount={
+                                      unseenRequestCount
+                                    }
                                     sessionId={session.user.id}
                                   />
                                 </li>
@@ -140,8 +153,13 @@ const MobileChatLayout = ({
 
                                 <span className="sr-only">Your profile</span>
                                 <div className="flex flex-col">
-                                  <span aria-hidden="true">{session.user.name}</span>
-                                  <span className="text-xs text-zinc-400" aria-hidden="true">
+                                  <span aria-hidden="true">
+                                    {session.user.name}
+                                  </span>
+                                  <span
+                                    className="text-xs text-zinc-400"
+                                    aria-hidden="true"
+                                  >
                                     {session.user.email}
                                   </span>
                                 </div>

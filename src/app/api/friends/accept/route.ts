@@ -45,7 +45,11 @@ export async function POST(req: Request) {
 
     // notify added users
     await Promise.all([
-      await pusherServer.trigger(pusherCompatible(`user:${idToAdd}:friends`), 'new_friend', user),
+      await pusherServer.trigger(
+        pusherCompatible(`user:${idToAdd}:friends`),
+        'new_friend',
+        user
+      ),
       await pusherServer.trigger(
         pusherCompatible(`user:${session.user.id}:friends`),
         'new_friend',

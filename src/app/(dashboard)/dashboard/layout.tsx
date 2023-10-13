@@ -33,7 +33,10 @@ const Layout = async ({ children }: Props) => {
   const friends = await getFriendsByUserId(session.user.id)
 
   const unseenRequestCount = (
-    (await fetchRedis('smembers', `user:${session.user.id}:incoming_friend_requests`)) as User[]
+    (await fetchRedis(
+      'smembers',
+      `user:${session.user.id}:incoming_friend_requests`
+    )) as User[]
   ).length
 
   return (
@@ -45,10 +48,12 @@ const Layout = async ({ children }: Props) => {
           sidebarOptions={sidebarOptions}
           unseenRequestCount={unseenRequestCount}
         />
-        div
       </div>
       <div className="hidden md:flex h-full w-full max-w-xs grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pt-4">
-        <Link href="/dashboard" className="flex h-10 shrink-0 items-center group">
+        <Link
+          href="/dashboard"
+          className="flex h-10 shrink-0 items-center group"
+        >
           <h2 className="text-xl italic mr-2 font-bold group-hover:mr-4 group-hover:ml-2 transition-all">
             RapidChat
           </h2>
@@ -56,7 +61,9 @@ const Layout = async ({ children }: Props) => {
         </Link>
 
         {friends.length > 0 && (
-          <div className="text-xs font-semibold leading-6 text-gray-400">Your chats</div>
+          <div className="text-xs font-semibold leading-6 text-gray-400">
+            Your chats
+          </div>
         )}
 
         <nav className="flex flex-1 flex-col">
@@ -65,7 +72,9 @@ const Layout = async ({ children }: Props) => {
               <SidebarChatList friends={friends} sessionId={session.user.id} />
             </li>
             <li>
-              <div className="text-xs font-semibold leading-6 text-gray-400">Overview</div>
+              <div className="text-xs font-semibold leading-6 text-gray-400">
+                Overview
+              </div>
 
               <ul role="list" className="-mx-2 mt-2 space-y-1">
                 {sidebarOptions.map((options) => {
@@ -120,7 +129,9 @@ const Layout = async ({ children }: Props) => {
       </div>
 
       <aside className="max-h-screen pb-4 pt-16 md:pt-0 w-full">
-        <div className="h-7 bg-indigo-400 text-white px-4">Made with ❤️ by Aditya Shrivastav</div>
+        <div className="h-7 bg-indigo-400 text-white px-4">
+          Made with ❤️ by Aditya Shrivastav
+        </div>
         {children}
       </aside>
     </div>

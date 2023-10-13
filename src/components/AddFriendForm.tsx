@@ -48,7 +48,10 @@ const AddFriendForm = (props: Props) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm">
-      <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+      <label
+        htmlFor="email"
+        className="block text-sm font-medium leading-6 text-gray-900"
+      >
         Add friend by E-Mail
       </label>
 
@@ -61,8 +64,12 @@ const AddFriendForm = (props: Props) => {
         />
         <Button>Add</Button>
       </div>
-      <p className="mt-1 text-sm text-red-600">{formState.errors.email?.message}</p>
-      {showSuccessState && <p className="mt-1 text-sm text-green-600">Friend request sent! 👍</p>}
+      <p className="mt-1 text-sm text-red-600">
+        {formState.errors.email?.message}
+      </p>
+      {showSuccessState && (
+        <p className="mt-1 text-sm text-green-600">Friend request sent! 👍</p>
+      )}
     </form>
   )
 }

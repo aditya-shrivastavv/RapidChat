@@ -1,4 +1,3 @@
-import Button from '@/components/ui/Button'
 import { getFriendsByUserId } from '@/helpers/get-friends-by-user-id'
 import { fetchRedis } from '@/helpers/redis'
 import { authOptions } from '@/lib/auth'
@@ -52,7 +51,10 @@ const Page = async (props: Props) => {
             </div>
 
             <Link
-              href={`/dashboard/chat/${chatHrefConstructor(session.user.id, friend.id)}`}
+              href={`/dashboard/chat/${chatHrefConstructor(
+                session.user.id,
+                friend.id
+              )}`}
               className="relative sm:flex"
             >
               <div className="mb-4 flex-shrink-0 sm:mb-0 sm:mr-4">
@@ -71,7 +73,9 @@ const Page = async (props: Props) => {
                 <h4 className="text-lg font-semibold">{friend.name}</h4>
                 <p className="mt-1 max-w-md">
                   <span className="text-zinc-400">
-                    {friend.lastMessage.senderId === session.user.id ? 'You: ' : ''}
+                    {friend.lastMessage.senderId === session.user.id
+                      ? 'You: '
+                      : ''}
                   </span>
                   {friend.lastMessage.text}
                 </p>

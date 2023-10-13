@@ -15,7 +15,13 @@ type Props = {
   chatPartner: User
 }
 
-const Messages = ({ initialMessages, sessionId, sessionImg, chatPartner, chatId }: Props) => {
+const Messages = ({
+  initialMessages,
+  sessionId,
+  sessionImg,
+  chatPartner,
+  chatId
+}: Props) => {
   const [messages, setMessages] = useState<Message[]>(initialMessages)
   const scrollDownRef = useRef<HTMLDivElement | null>(null)
 
@@ -51,20 +57,30 @@ const Messages = ({ initialMessages, sessionId, sessionImg, chatPartner, chatId 
           messages[index - 1]?.senderId === messages[index].senderId
 
         return (
-          <div className="chat-message" key={`${message.id}-${message.timestamp}`}>
-            <div className={cn('flex items-end', { 'justify-end': isCurrentUser })}>
+          <div
+            className="chat-message"
+            key={`${message.id}-${message.timestamp}`}
+          >
+            <div
+              className={cn('flex items-end', { 'justify-end': isCurrentUser })}
+            >
               <div
-                className={cn('flex flex-col space-y-2 text-base max-w-xs mx-2', {
-                  'order-1 items-end': isCurrentUser,
-                  'order-2 items-start': !isCurrentUser
-                })}
+                className={cn(
+                  'flex flex-col space-y-2 text-base max-w-xs mx-2',
+                  {
+                    'order-1 items-end': isCurrentUser,
+                    'order-2 items-start': !isCurrentUser
+                  }
+                )}
               >
                 <span
                   className={cn('px-4 py-2 rounded-lg inline-block', {
                     'bg-indigo-600 text-white': isCurrentUser,
                     'bg-gray-200 text-gray-900': !isCurrentUser,
-                    'rounded-br-none': !hasNextMessageFromTheSameUser && isCurrentUser,
-                    'rounded-bl-none': !hasNextMessageFromTheSameUser && !isCurrentUser
+                    'rounded-br-none':
+                      !hasNextMessageFromTheSameUser && isCurrentUser,
+                    'rounded-bl-none':
+                      !hasNextMessageFromTheSameUser && !isCurrentUser
                   })}
                 >
                   {message.text}{' '}
@@ -83,7 +99,9 @@ const Messages = ({ initialMessages, sessionId, sessionImg, chatPartner, chatId 
               >
                 <Image
                   fill
-                  src={isCurrentUser ? (sessionImg as string) : chatPartner.image}
+                  src={
+                    isCurrentUser ? (sessionImg as string) : chatPartner.image
+                  }
                   alt="Profile picture"
                   referrerPolicy="no-referrer"
                   className="rounded-full"

@@ -30,7 +30,14 @@ export interface ButtonProps
   isLoading?: boolean
 }
 
-const Button = ({ className, children, variant, size, isLoading, ...props }: ButtonProps) => {
+const Button = ({
+  className,
+  children,
+  variant,
+  size,
+  isLoading,
+  ...props
+}: ButtonProps) => {
   return (
     <button
       className={cn(buttonVariants({ variant, size, className }))}

@@ -17,7 +17,12 @@ type Props = {
 
 async function getChatMessages(chatId: string) {
   try {
-    const results: string[] = await fetchRedis('zrange', `chat:${chatId}:messages`, 0, -1)
+    const results: string[] = await fetchRedis(
+      'zrange',
+      `chat:${chatId}:messages`,
+      0,
+      -1
+    )
 
     const dbMessages = results.map((message) => JSON.parse(message) as Message)
 
@@ -45,7 +50,10 @@ const Chat = async ({ params }: Props) => {
 
   const chatPartnerId = user.id === userId1 ? userId2 : userId1
 
-  const chatPartnerRaw = (await fetchRedis('get', `user:${chatPartnerId}`)) as string
+  const chatPartnerRaw = (await fetchRedis(
+    'get',
+    `user:${chatPartnerId}`
+  )) as string
   const chatPartner = JSON.parse(chatPartnerRaw) as User
 
   const initialMessages = await getChatMessages(chatId)
@@ -68,7 +76,9 @@ const Chat = async ({ params }: Props) => {
 
           <div className="flex flex-col leading-tight">
             <div className="text-xl flex items-center">
-              <span className="text-gray-700 mr-3 font-semibold">{chatPartner.name}</span>
+              <span className="text-gray-700 mr-3 font-semibold">
+                {chatPartner.name}
+              </span>
             </div>
             <span className="text-sm text-gray-600">{chatPartner.email}</span>
           </div>

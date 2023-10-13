@@ -14,19 +14,27 @@ type Props = {
 
 const FriendRequests = ({ incomingFriendRequests, sessionId }: Props) => {
   const router = useRouter()
-  const [friendRequests, setFriendRequests] =
-    useState<IncomingFriendRequests[]>(incomingFriendRequests)
+  const [friendRequests, setFriendRequests] = useState<
+    IncomingFriendRequests[]
+  >(incomingFriendRequests)
 
   useEffect(() => {
-    pusherClient.subscribe(pusherCompatible(`user:${sessionId}:incoming_friend_requests`))
-    function friendRequestHandler({ senderId, senderEmail }: IncomingFriendRequests) {
+    pusherClient.subscribe(
+      pusherCompatible(`user:${sessionId}:incoming_friend_requests`)
+    )
+    function friendRequestHandler({
+      senderId,
+      senderEmail
+    }: IncomingFriendRequests) {
       setFriendRequests((prev) => [...prev, { senderId, senderEmail }])
     }
 
     pusherClient.bind('incoming_friend_requests', friendRequestHandler)
 
     return () => {
-      pusherClient.unsubscribe(pusherCompatible(`user:${sessionId}:incoming_friend_requests`))
+      pusherClient.unsubscribe(
+        pusherCompatible(`user:${sessionId}:incoming_friend_requests`)
+      )
       pusherClient.unbind('incoming_friend_requests', friendRequestHandler)
     }
   }, [sessionId])
@@ -35,7 +43,9 @@ const FriendRequests = ({ incomingFriendRequests, sessionId }: Props) => {
     await axios.post('/api/friends/accept', {
       id: senderId
     })
-    setFriendRequests((prev) => prev.filter((request) => request.senderId !== senderId))
+    setFriendRequests((prev) =>
+      prev.filter((request) => request.senderId !== senderId)
+    )
 
     router.refresh()
   }
@@ -44,7 +54,9 @@ const FriendRequests = ({ incomingFriendRequests, sessionId }: Props) => {
     await axios.post('/api/friends/deny', {
       id: senderId
     })
-    setFriendRequests((prev) => prev.filter((request) => request.senderId !== senderId))
+    setFriendRequests((prev) =>
+      prev.filter((request) => request.senderId !== senderId)
+    )
 
     router.refresh()
   }
