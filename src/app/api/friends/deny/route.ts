@@ -3,6 +3,11 @@ import { db } from '@/lib/db'
 import { getServerSession } from 'next-auth'
 import { z } from 'zod'
 
+/**
+ * Handles a POST request to deny a friend request.
+ * @param req - The request object.
+ * @returns A promise that resolves with a Response object.
+ */
 export async function POST(req: Request) {
   try {
     const body = await req.json()
