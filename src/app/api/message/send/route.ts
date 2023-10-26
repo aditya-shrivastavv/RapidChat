@@ -7,6 +7,11 @@ import { Message, messageValidator } from '@/lib/validations/message'
 import { nanoid } from 'nanoid'
 import { getServerSession } from 'next-auth'
 
+/**
+ * Handles the HTTP POST request to send a message to a chat.
+ * @param req - The request object containing the message data.
+ * @returns A response indicating the success or failure of the operation.
+ */
 export async function POST(req: Request) {
   try {
     const { text, chatId }: { text: string; chatId: string } = await req.json()

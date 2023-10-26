@@ -6,6 +6,11 @@ import { pusherCompatible } from '@/lib/utils'
 import { getServerSession } from 'next-auth'
 import { z } from 'zod'
 
+/**
+ * Handles the HTTP POST request for accepting a friend request.
+ * @param req - The HTTP request object containing the friend ID to add.
+ * @returns A Promise that resolves to a Response object indicating the success or failure of the request.
+ */
 export async function POST(req: Request) {
   try {
     const body = await req.json()

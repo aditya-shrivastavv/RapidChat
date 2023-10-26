@@ -7,6 +7,11 @@ import { addFriendValidator } from '@/lib/validations/add-friend'
 import { getServerSession } from 'next-auth'
 import z from 'zod'
 
+/**
+ * Handles the HTTP POST request to add a friend.
+ * @param req - The request object.
+ * @returns A Promise that resolves to a Response object.
+ */
 export async function POST(req: Request) {
   try {
     const body = await req.json()
