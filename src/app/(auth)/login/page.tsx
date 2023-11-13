@@ -1,5 +1,7 @@
 'use client'
-
+/**
+ * Login page
+ */
 import GoogleLogo from '@/components/logo/GoogleLogo'
 import { Icons } from '@/components/logo/Icons'
 import Button from '@/components/ui/Button'
