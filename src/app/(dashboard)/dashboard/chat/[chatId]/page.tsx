@@ -13,6 +13,12 @@ type Props = {
   }
 }
 
+/**
+ * Retrieves chat messages from Redis and returns them in reverse chronological order.
+ * @param chatId - The ID of the chat to retrieve messages for.
+ * @returns An array of chat messages in reverse chronological order.
+ * @throws If there was an error retrieving the messages.
+ */
 async function getChatMessages(chatId: string) {
   try {
     const results: string[] = await fetchRedis(
@@ -34,6 +40,12 @@ async function getChatMessages(chatId: string) {
   }
 }
 
+/**
+ * Renders a chat page with messages and a chat input.
+ * @param {Props} props - The component props.
+ * @param {string} props.params.chatId - The ID of the chat to render.
+ * @returns {JSX.Element} - The rendered chat page.
+ */
 const Chat = async ({ params }: Props) => {
   const { chatId } = params
   const session = await getServerSession(authOptions)
