@@ -31,95 +31,53 @@ RapidChat is a real-time chat application designed to provide a seamless and int
 ## Project Structure
 
 ```bash
-│   middleware.ts
 ├───app
-│   │   favicon.ico
-│   │   globals.css
-│   │   layout.tsx
-│   │   page.tsx
-│   │
 │   ├───(auth)
 │   │   └───login
-│   │           page.tsx
-│   │
 │   ├───(dashboard)
 │   │   └───dashboard
-│   │       │   layout.tsx
-│   │       │   page.tsx
-│   │       │
 │   │       ├───add
-│   │       │       loading.tsx
-│   │       │       page.tsx
-│   │       │
 │   │       ├───chat
 │   │       │   └───[chatId]
-│   │       │           loading.tsx
-│   │       │           page.tsx
-│   │       │
 │   │       └───requests
-│   │               loading.tsx
-│   │               page.tsx
-│   │
 │   └───api
 │       ├───auth
 │       │   └───[...nextauth]
-│       │           route.ts
-│       │
 │       ├───friends
 │       │   ├───accept
-│       │   │       route.ts
-│       │   │
 │       │   ├───add
-│       │   │       route.ts
-│       │   │
 │       │   └───deny
-│       │           route.ts
-│       │
 │       └───message
 │           └───send
-│                   route.ts
-│
 ├───components
-│   │   AddFriendForm.tsx
-│   │   ChatInput.tsx
-│   │   FriendRequests.tsx
-│   │   FriendRequestSidebarOptions.tsx
-│   │   Messages.tsx
-│   │   MobileChatLayout.tsx
-│   │   Providers.tsx
-│   │   SidebarChatList.tsx
-│   │   SignOutButton.tsx
-│   │   UnseenChatToast.tsx
-│   │
 │   ├───logo
-│   │       GoogleLogo.tsx
-│   │       Icons.tsx
-│   │
 │   └───ui
-│           Button.tsx
-│
 ├───helpers
-│       get-friends-by-user-id.ts
-│       redis.ts
-│
 ├───lib
-│   │   auth.ts
-│   │   db.ts
-│   │   pusher.ts
-│   │   utils.ts
-│   │
 │   └───validations
-│           add-friend.ts
-│           message.ts
-│
 └───types
-        db.d.ts
-        next-auth.d.ts
-        pusher.d.ts
-        typings.d.ts
 ```
 
-The Documentation for each file can be found in the file itself.
+## Documentation
+
+### Authentication
+
+The whole authentication part is handled by NextAuth. NextAuth is initialized in the app by adding a route through nextJs `/api/auth/[...nextauth]/route.ts` in the `app` folder. the `[...nextauth]` is a dynamic catch all route segment which catches parameters passed after `/api/auth/` so that it can be used in the `route.ts` file.
+
+In `route.ts` file a route handler is exposed as **GET** and **POST** after configuring with the required options. The options are passed as an object to the `NextAuth` function. The options object contains the following properties:
+
+- `adapter`: The adapter is used to connect to the database. Here we use the `UpstashRedisAdapter` to connect to the database. The `UpstashRedisAdapter` is initialized by passing the `RedisDB` instance to it.
+- `session`: The session object is used to configure the session. Here we define the strategy as `jwt`.
+- `providers`: The providers object is used to configure the authentication providers. Here we define the providers as `Google`.
+- `pages`: The pages object is used to configure the authentication pages. Here we define the page `signIn` as `/login`.
+- `secret`: Secret is used to configure the secret used to encrypt the JWT token.
+- `callbacks`: The callbacks object is used to configure the callbacks. Here we define the async function`jwt` which is used to configure the JWT token and the async function `session` which is used to configure the session. Finally a `redirect()` function is returned which is used to redirect the user to the dashboard page after successful authentication.
+
+### Send and Accept Friend Requests
+
+### Realtime Chat
+
+### Testing
 
 ## Installation
 
