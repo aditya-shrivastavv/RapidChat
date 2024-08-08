@@ -1,4 +1,4 @@
-# RapidChat
+# RapidChat - Realtime Chatting Application Build Using Redis
 
 <img src="./public/gif/superfast.gif" width="100%" alt="" />
 
