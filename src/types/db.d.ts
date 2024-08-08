@@ -1,3 +1,10 @@
+/**
+ * This file is used to define the types of the data that is stored in the database.
+ */
+
+/**
+ * Type user
+ */
 interface User {
   name: string
   email: string

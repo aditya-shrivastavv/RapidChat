@@ -6,12 +6,21 @@ export const Icons = {
     <Image
       src="/logo.svg"
       alt="Logo"
-      height={35}
-      width={35}
+      height={45}
+      width={45}
       referrerPolicy="no-referrer"
     />
   ),
-  UserPlus
+  UserPlus,
+  GitHubLogo: (props: LucideProps) => (
+    <Image
+      src="/github-logo.svg"
+      alt="Logo"
+      height={18}
+      width={18}
+      referrerPolicy="no-referrer"
+    />
+  )
 }
 
 export type Icon = keyof typeof Icons
