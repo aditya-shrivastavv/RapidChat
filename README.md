@@ -2,63 +2,51 @@
 
 <img src="./public/gif/superfast.gif" width="100%" alt="" />
 
-[Live →](https://rapid-chat-one.vercel.app)
+RapidChat is a real-time chat application designed to provide a seamless and interactive communication platform. It leverages the power of several robust technologies including --
 
-RapidChat is a real-time chat application designed to provide a seamless and interactive communication platform. It leverages the power of several robust technologies including React Hook Form, Redis, Next.js, Next Auth, Pusher JS, Zod, Jest, React Testing Library, Tailwind CSS, and TypeScript. The application is designed with a focus on real-time interactions, performance, and user experience. The project structure is well-organized, making it easy for developers to understand and contribute to. You can check out the live version of the application [here](https://rapid-chat-one.vercel.app).
+- Next.js
+- Next Auth
+- TypeScript
+- Redis
+- Tailwind CSS
+- Pusher JS
+- Zod
+- Jest
+- React Hook Form
+- React Testing Library
 
-## Tech Stack
+The application is designed with a focus on real-time interactions, performance, and user experience. The project structure is well-organized, making it easy for developers to understand and contribute to.
 
-1. **Next JS**
-   Next.js is a React framework that provides a production-ready setup for building React applications. It provides several features out of the box, including server-side rendering, file-based routing, and API routes.
-2. **Redis**
-   Redis, an in-memory data structure store, to store and retrieve data quickly. Here we use Redis to store the user's friends and their messages.
-3. **Next Auth**
-   Next Auth is a library for handling authentication in Next.js applications. It provides a simple API for handling authentication with several providers, including Google, Facebook, Twitter, and GitHub.
-4. **Typescript**
-   TypeScript is a superset of JavaScript that provides static typing and other features to JavaScript.
-5. **Tailwindcss**
-   Tailwindcss is a utility-first CSS framework.
-6. **Pusher JS**
-   Pusher JS is a library for handling real-time communication in web applications. It provides an API for subscribing to channels and listening to events.
-7. **React hook form**
-   React Hook Forms is a lightweight library for managing forms in React applications.
-   It provides a simple and intuitive API for handling form inputs and validation.
-8. **Zod**
-   Zod is a TypeScript-first schema validation library. It provides a simple API for validating data against a schema.
-9. **Jest**
-   Jest is a JavaScript testing framework.
-10. **React Testing Library**
-    React Testing Library is a library for testing React components.
+Live Demo Here
 
 ## Project Structure
 
-```bash
-├───app
-│   ├───(auth)
-│   │   └───login
-│   ├───(dashboard)
-│   │   └───dashboard
-│   │       ├───add
-│   │       ├───chat
-│   │       │   └───[chatId]
-│   │       └───requests
-│   └───api
-│       ├───auth
-│       │   └───[...nextauth]
-│       ├───friends
-│       │   ├───accept
-│       │   ├───add
-│       │   └───deny
-│       └───message
-│           └───send
-├───components
-│   ├───logo
-│   └───ui
-├───helpers
-├───lib
-│   └───validations
-└───types
-```
+The source code is structured under the `src` directory. The `src` directory contains the following subdirectories:
+
+- [`app`](./app/) - contains the main application code.
+  - [`(auth)`](./app/(auth)/) - auth related routes container
+    - [`login`](./app/(auth)/login/) - login page.
+  - [`api`](./app/api/) - backend API.
+    - [`auth`](./app/api/auth/) - authentication API.
+      - [`[...nextauth]`](./app/api/auth/[...nextauth]/) - NextAuth API under catch all route segment.
+    - [`friends`](./app/api/friends/) - friends API.
+      - [`accept`](./app/api/friends/accept/) - accept friend request API.
+      - [`add`](./app/api/friends/add/) - add friend API.
+      - [`deny`](./app/api/friends/deny/) - deny friend request API.
+    - [`message`](./app/api/message/) - message API.
+      - [`send`](./app/api/message/send/) - send message API.
+  - [`(dashboard)`](./app/(dashboard)/) - dashboard related routes container
+    - [`dashboard`](./app/(dashboard)/) - dashboard page.
+      - [`add`](./app/(dashboard)/dashboard/add) - add friend page.
+      - [`chat`](./app/(dashboard)/dashboard/chat) - chating page.
+      - [`request`](./app/(dashboard)/dashboard/requests) - friend requests page.
+- [`components`](./components/) - contains reusable components.
+  - [`ui`](./components/ui/) - contains UI components.
+  - [`logo`](./components/logo/) - contains logo components.
+- [`lib`](./lib/) - contains extra functions.
+  - [`validations`](./lib/validations/) - contains zod validation functions.
+- [`helpers`](./helpers/) - contains database helper functions.
+- [`types`](./types/) - contains typescript types.
 
 ## Documentation
 
