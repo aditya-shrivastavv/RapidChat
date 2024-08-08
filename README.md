@@ -1,6 +1,6 @@
 # RapidChat
 
-![fast gif](/public/gif/superfast.gif)
+![fast gif](/public/gif/superfast.gif| width=100)
 
 [Live →](https://rapid-chat-one.vercel.app)
 
