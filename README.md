@@ -1,4 +1,6 @@
-# Documentation - RapidChat
+# RapidChat
+
+[fast gif](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExYW9tOXI5YnphbTc3Mm5ndDM5dWswcmQ1aW92emV1MHNrbnM1Ym83NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/cjbNil0GeIWcy9T2uw/giphy.webp)
 
 [Live →](https://rapid-chat-one.vercel.app)
 
