@@ -1,6 +1,6 @@
 # RapidChat - Realtime Chatting Application
 
-<img src="./public/gif/superfast.gif" width="100%" alt="" />
+YouTube Video Demo Here
 
 RapidChat is a real-time chat application designed to provide a seamless and interactive communication platform. It leverages the power of several robust technologies including --
 
