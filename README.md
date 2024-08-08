@@ -19,7 +19,32 @@ The application is designed with a focus on real-time interactions, performance,
 
 Live Demo Here
 
-## Project Structure
+## Documentation
+
+The full documentation for the project can be found under [`documentation`](./documentation/) directory.
+
+But still I am going to explain the project structure overview here.
+
+- `__tests__/` -- contains the test files for the application which is written in Jest and React Testing Library.
+- `.devcontainer/` -- contains the devcontainer configuration for the project.
+- `.github/` -- contains the GitHub actions configuration for the project.
+- `.vscode/` -- contains small VSCode settings for the project.
+- `documentation/` -- contains the full documentation for the project.
+- `public/` -- contains the public assets for the project.
+- `src/` -- contains the main source code for the project.
+- `.dockerignore` -- contains the docker ignore file.
+- `.eslintrc.json` -- contains the ESLint configuration for the project.
+- `.gitignore` -- contains the git ignore file.
+- `.prettierrc.json` -- contains the Prettier (code formatter) configuration for the project.
+- `.prettierignore` -- contains the Prettier ignore file.
+- `Dockerfile.dev` -- contains the Dockerfile for the development environment.
+- `jest.config.js` -- contains the Jest configuration for the project.
+- `next.config.js` -- contains the Next.js configuration for the project.
+- `package.json` -- contains the npm package configuration for the project.
+- `tailwind.config.js` -- contains the Tailwind CSS configuration for the project.
+- `tsconfig.json` -- contains the TypeScript configuration for the project.
+
+## Source Code Structure
 
 The source code is structured under the `src` directory. The `src` directory contains the following subdirectories:
 
@@ -48,11 +73,9 @@ The source code is structured under the `src` directory. The `src` directory con
 - [`helpers`](./helpers/) - contains database helper functions.
 - [`types`](./types/) - contains typescript types.
 
-## Documentation
-
-The full documentation for the project can be found under [`documentation`](./documentation/) directory.
-
 ## Installation
+
+### Local Development
 
 1. Clone the repository
 
@@ -94,3 +117,13 @@ The full documentation for the project can be found under [`documentation`](./do
    ```bash
    pnpm dev
    ```
+
+### Docker Dev Container
+
+Assuming docker is installed on your machine, you can run the following command to start the development server in a docker container.
+
+```bash
+docker run -d -p 3000:3000 --env-file .env.local adityadocs/rapidchat
+```
+
+Also create `.env.local` file with the above mentioned environment variables before running the above command.
