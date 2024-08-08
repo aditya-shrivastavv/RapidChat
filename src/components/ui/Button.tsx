@@ -3,10 +3,15 @@ import { VariantProps, cva } from 'class-variance-authority'
 import { Loader2 } from 'lucide-react'
 import { ButtonHTMLAttributes } from 'react'
 
+/**
+ * Button Variants
+ */
 export const buttonVariants = cva(
+  // Tailwind CSS classes that are always applied
   'active:scale-95 inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none',
   {
     variants: {
+      // Custom variants
       variant: {
         default: 'bg-slate-900 text-white hover:bg-slate-800',
         ghost: 'bg-transparent hover:text-slate-900 hover:bg-slate-200'
@@ -30,6 +35,10 @@ export interface ButtonProps
   isLoading?: boolean
 }
 
+
+/**
+ * Button component for consistent styling across the app.
+ */
 const Button = ({
   className,
   children,

@@ -58,11 +58,13 @@ const Messages = ({
 
         return (
           <div
-            className="chat-message"
+            className="chat-message hover:bg-gray-100"
             key={`${message.id}-${message.timestamp}`}
           >
             <div
-              className={cn('flex items-end', { 'justify-end': isCurrentUser })}
+              className={cn('flex items-end', {
+                'justify-end': isCurrentUser
+              })}
             >
               <div
                 className={cn(

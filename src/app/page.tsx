@@ -8,7 +8,6 @@ import { signOut } from 'next-auth/react'
 /**
  * Renders the Home page component.
  * This page is never reached because the user is redirected to the dashboard if they are logged in.
- * @returns JSX.Element
  */
 function Home() {
   return (

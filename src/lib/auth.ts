@@ -1,9 +1,16 @@
+/**
+ * File responsible for all authentication logic.
+ */
 import { fetchRedis } from '@/helpers/redis'
 import { UpstashRedisAdapter } from '@next-auth/upstash-redis-adapter'
 import { NextAuthOptions } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 import { db } from './db'
 
+/**
+ * Function to get Google OAuth credentials from environment variables.
+ * @returns Google OAuth credentials.
+ */
 function getGoogleCredentials() {
   const clientId = process.env.GOOGLE_CLIENT_ID
   const clientSecret = process.env.GOOGLE_CLIENT_SECRET
@@ -19,25 +26,30 @@ function getGoogleCredentials() {
   return { clientId, clientSecret }
 }
 
+/**
+ * Next Auth configuration.
+ */
 export const authOptions: NextAuthOptions = {
-  // Automatic db interaction
-  adapter: UpstashRedisAdapter(db),
+  adapter: UpstashRedisAdapter(db), // Automatic Integration with Upstash
   session: {
-    strategy: 'jwt'
+    strategy: 'jwt' // Use JWT for session management
   },
   pages: {
-    signIn: '/login'
+    signIn: '/login' // Redirect to /login when user is not authenticated
   },
   providers: [
     GoogleProvider({
+      // Google OAuth Provider
       clientId: getGoogleCredentials().clientId,
       clientSecret: getGoogleCredentials().clientSecret
     })
   ],
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
+    // Actions to be performed after a event
     async jwt({ token, user }) {
-      // Buggy: const dbUser = ((await db.get(`user:${token.id}`)) as User) || null
+      // Buggy:
+      // const dbUser = ((await db.get(`user:${token.id}`)) as User) || null
       const dbUserResult = (await fetchRedis('get', `user:${token.id}`)) as
         | string
         | null

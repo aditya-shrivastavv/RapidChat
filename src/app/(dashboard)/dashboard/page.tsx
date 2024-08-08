@@ -1,3 +1,10 @@
+/**
+ * Renders the dashboard page component.
+ *
+ * @component
+ * @param {Props} props - The component props.
+ * @returns {JSX.Element} The rendered component.
+ */
 import { getFriendsByUserId } from '@/helpers/get-friends-by-user-id'
 import { fetchRedis } from '@/helpers/redis'
 import { authOptions } from '@/lib/auth'
@@ -10,7 +17,14 @@ import { notFound } from 'next/navigation'
 
 type Props = {}
 
-const Page = async (props: Props) => {
+
+/**
+ * Renders the DashboardPage component.
+ *
+ * @param {Props} props - The component props.
+ * @returns {JSX.Element} The rendered DashboardPage component.
+ */
+const DashboardPage = async (props: Props) => {
   const session = await getServerSession(authOptions)
   if (!session) notFound()
 
@@ -87,4 +101,4 @@ const Page = async (props: Props) => {
   )
 }
 
-export default Page
+export default DashboardPage
