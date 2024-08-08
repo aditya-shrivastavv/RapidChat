@@ -50,24 +50,7 @@ The source code is structured under the `src` directory. The `src` directory con
 
 ## Documentation
 
-### Authentication
-
-The whole authentication part is handled by NextAuth. NextAuth is initialized in the app by adding a route through nextJs `/api/auth/[...nextauth]/route.ts` in the `app` folder. the `[...nextauth]` is a dynamic catch all route segment which catches parameters passed after `/api/auth/` so that it can be used in the `route.ts` file.
-
-In `route.ts` file a route handler is exposed as **GET** and **POST** after configuring with the required options. The options are passed as an object to the `NextAuth` function. The options object contains the following properties:
-
-- `adapter`: The adapter is used to connect to the database. Here we use the `UpstashRedisAdapter` to connect to the database. The `UpstashRedisAdapter` is initialized by passing the `RedisDB` instance to it.
-- `session`: The session object is used to configure the session. Here we define the strategy as `jwt`.
-- `providers`: The providers object is used to configure the authentication providers. Here we define the providers as `Google`.
-- `pages`: The pages object is used to configure the authentication pages. Here we define the page `signIn` as `/login`.
-- `secret`: Secret is used to configure the secret used to encrypt the JWT token.
-- `callbacks`: The callbacks object is used to configure the callbacks. Here we define the async function`jwt` which is used to configure the JWT token and the async function `session` which is used to configure the session. Finally a `redirect()` function is returned which is used to redirect the user to the dashboard page after successful authentication.
-
-### Send and Accept Friend Requests
-
-### Realtime Chat
-
-### Testing
+The full documentation for the project can be found under [`documentation`](./documentation/) directory.
 
 ## Installation
 
@@ -79,8 +62,8 @@ In `route.ts` file a route handler is exposed as **GET** and **POST** after conf
 
 2. Install the dependencies
 
-   ```bash
-   pnpm install
+   ```npm
+   npm install
    ```
 
 3. Create a `.env.local` file in the root directory and add the following environment variables
@@ -111,7 +94,3 @@ In `route.ts` file a route handler is exposed as **GET** and **POST** after conf
    ```bash
    pnpm dev
    ```
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
