@@ -8,11 +8,13 @@ import { useForm } from 'react-hook-form'
 import z from 'zod'
 import Button from './ui/Button'
 
-type Props = {}
-
 type FormData = z.infer<typeof addFriendValidator>
 
-const AddFriendForm = (props: Props) => {
+/**
+ * AddFriendForm component allows users to add friends by email.
+ * @returns A React JSX Element.
+ */
+function AddFriendForm() {
   const [showSuccessState, setShowSuccessState] = useState<boolean>(false)
   const { register, handleSubmit, setError, formState } = useForm<FormData>({
     resolver: zodResolver(addFriendValidator)

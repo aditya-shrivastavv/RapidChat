@@ -129,8 +129,18 @@ const Layout = async ({ children }: Props) => {
       </div>
 
       <aside className="max-h-screen pb-4 pt-16 md:pt-0 w-full">
-        <div className="h-7 bg-indigo-400 text-white px-4">
-          Made with ❤️ by Aditya Shrivastav
+        <div className="h-7 bg-indigo-400 text-white px-4 py-[0.5px]">
+          <Link
+            href={'https://github.com/aditya-shrivastavv/RapidChat'}
+            target="_blank"
+            className="inline-flex items-center gap-2"
+          >
+            Made with ❤️ by
+            <span className="inline-flex gap-1 px-1 font-semibold text-black hover:ring-1 hover:ring-white hover:rounded-full">
+              <Icons.GitHubLogo className="" />
+              Aditya Shrivastav
+            </span>
+          </Link>
         </div>
         {children}
       </aside>

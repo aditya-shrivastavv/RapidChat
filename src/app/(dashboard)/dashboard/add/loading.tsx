@@ -1,9 +1,11 @@
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
-type Props = {}
-
-const Loading = (props: Props) => {
+/**
+ * A component that displays a loading skeleton for the add feature in the dashboard.
+ * @returns JSX.Element
+ */
+const Loading = () => {
   return (
     <div className="w-full flex flex-col gap-3">
       <Skeleton className="mb-4" height={60} width={500} />

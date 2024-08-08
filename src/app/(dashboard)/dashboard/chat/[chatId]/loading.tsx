@@ -1,9 +1,11 @@
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
-type Props = {}
-
-const Loading = (props: Props) => {
+/**
+ * A loading screen for the chat page
+ * @returns JSX.Element
+ */
+const Loading = () => {
   return (
     <div className="flex flex-col h-full items-center">
       <Skeleton className="mb-4" height={40} width={400} />
@@ -72,14 +74,7 @@ const Loading = (props: Props) => {
           </div>
         </div>
       </div>
-
-      {/* chat input */}
-
-      {/* <ChatInput
-        chatPartner={chatPartner}
-        img={session.user.image}
-        chatId={chatId}
-      /> */}
+      {/* Message box */}
     </div>
   )
 }
