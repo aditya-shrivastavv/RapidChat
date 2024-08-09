@@ -21,7 +21,9 @@ Live Demo Here
 
 ## Documentation
 
-The full documentation for the project can be found under [`documentation`](./documentation/) directory.
+The detailed documentation about the components is available in the it's own directory.
+
+Links here.
 
 But still I am going to explain the project structure overview here.
 
