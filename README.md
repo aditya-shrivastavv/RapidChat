@@ -19,13 +19,12 @@ The application is designed with a focus on real-time interactions, performance,
 
 Live Demo Here
 
-## Documentation 📚
+## Source Code Structure 📝
 
-The detailed documentation about the components is available in the it's own directory.
+The source code is structured under the `src` directory. The complete structure is defined in a separate README file under the `src` directory.
+Check out the [source code structure](./src/) for more details.
 
-Links here.
-
-But still I am going to explain the project structure overview here.
+For detailed documentation about every component, checkout [src/app](./src/app/) and [src/components](./src/components/)
 
 - `__tests__/` -- contains the test files for the application which is written in Jest and React Testing Library.
 - `.devcontainer/` -- contains the devcontainer configuration for the project.
@@ -46,12 +45,6 @@ But still I am going to explain the project structure overview here.
 - `tailwind.config.js` -- contains the Tailwind CSS configuration for the project.
 - `tsconfig.json` -- contains the TypeScript configuration for the project.
 
-## Source Code Structure 📝
-
-The source code is structured under the `src` directory. The complete structure is defined in a separate README file under the `src` directory.
-Check out the [source code structure](./src/) for more details.
-For detailed documentation about every component, checkout [src/app](./src/app/) and [src/components](./src/components/)
-
 ## How realtime features are implemented? 🤔
 
 - To implement the realtime features, we are using [Pusher Channels](https://pusher.com/docs/channels/getting_started/javascript/?ref=docs-index).
@@ -67,7 +60,7 @@ For detailed documentation about every component, checkout [src/app](./src/app/)
   - For example, when a new message is sent, first it gets stored in DB and then we trigger an event on the channel with the message data. All the clients who are subscribed to that channel will receive the message in real-time and the UI will be updated accordingly. NICE! 😎
 - *Usage*:
 
-   ```typescript
+   ```js
    import PusherServer from 'pusher'
    import PusherClient from 'pusher-js'
 
@@ -89,7 +82,7 @@ For detailed documentation about every component, checkout [src/app](./src/app/)
 
    Now use `pusherServer` and `pusherClient` to trigger events and listen to events respectively.
 
-   ```typescript
+   ```js
    // Trigger an event
    // -- -- -- -- --
    pusherServer.trigger('my-channel', 'my-event', {
@@ -97,7 +90,7 @@ For detailed documentation about every component, checkout [src/app](./src/app/)
    })
    ```
 
-   ```typescript
+   ```js
    // Subscribe to a channel
    // -- -- -- -- -- -- -- 
    pusherClient.subscribe('my-channel')
