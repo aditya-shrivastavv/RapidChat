@@ -9,6 +9,14 @@ import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 
+const codeData = [
+  '{',
+  '  "name": "Your name",',
+  '  "email": "Your email", ',
+  '  "image": "Your google profile image URL"',
+  '}'
+]
+
 /**
  * Renders the login page.
  * @returns Login page component.
@@ -53,6 +61,37 @@ function Login() {
             {loading ? null : <GoogleLogo />}
             Google
           </Button>
+
+          <div className="border-[1.2px] p-6 border-gray-300 rounded-xl">
+            <div className="flex flex-col text-sm bg-gray-100 p-2 rounded-xl mb-3">
+              {codeData.map((line) => (
+                <code key={line} className="max-w-80">
+                  {line}
+                </code>
+              ))}
+            </div>
+
+            <ul className="max-w-80 text-xs list-disc flex flex-col gap-1 pl-4">
+              <li>That&apos;s the only data we receive from Google.</li>
+              <li>
+                Just a demo project by{' '}
+                <a
+                  href="https://github.com/aditya-shrivastavv"
+                  className="text-blue-800 hover:underline"
+                >
+                  github/aditya-shrivastavv
+                </a>
+              </li>
+              <li>
+                Email is not used for any purpose other than login. We
+                don&apos;t send any emails.
+              </li>
+              <li>
+                If you prefer not to provide your email for login, we fully
+                respect your choice. Watch demo video below.
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </>
