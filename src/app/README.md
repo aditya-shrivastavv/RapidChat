@@ -69,9 +69,40 @@
 
 #### Accept Friend
 
+- Exposes a POST handler.
+- First the body of the request is parsed using `req.json()`
+- Validations --
+  1. Check if the id is a valid id.
+  2. Check if the user is logged in. If not then return unauthorized.
+  3. Check if both the users are not already friends.
+  4. Check if there is a friend request from the user. Without a friend request, the user cannot accept the friend.
+- If all the validations pass, we fetch data of both users from the database using the ids.
+- We add both users to each other's friend list.
+- Trigger a notification to `pusherServer`.
+
 #### Deny Friend
 
+- Exposes a POST handler.
+- First the body of the request is parsed using `req.json()`
+- Validations --
+  1. Check if the user is logged in. If not then return unauthorized.
+  2. Check if the id is a valid id.
+  3. Check if there is a friend request from the user. Without a friend request, the user cannot deny the friend.
+- If all the validations pass, we delete the friend request from the database.
+- We don't need to trigger a notification to `pusherServer` because the user is just denying the friend request. No UI updation is required at the friend request sender's end.
+
 ### Message API
+
+- API route is `/api/message/send`
+- Exposes a POST handler.
+- The message text and `chatId` is extracted from the request body.
+- Validations --
+  1. Check if the user is logged in. If not then return unauthorized.
+  2. Extract Ids of both users from the `chatId`. If the current user's id doesn't match with the any of the ids, then return unauthorized.
+  3. Confirm that both users are friends. If not then return unauthorized.
+- Construct the message object and validate it using `messageValidator`.
+- Save the message to the database.
+- Trigger a notification to `pusherServer`.
 
 ## Auth pages
 
