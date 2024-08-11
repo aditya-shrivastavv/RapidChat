@@ -5,7 +5,7 @@
   - [API](#api)
     - [Auth API](#auth-api)
     - [Friends API](#friends-api)
-      - [Add Friend](#add-friend)
+      - [Friend Request](#friend-request)
       - [Accept Friend](#accept-friend)
       - [Deny Friend](#deny-friend)
     - [Message API](#message-api)
@@ -47,7 +47,7 @@
   - `/api/friends/deny` - For rejecting friend requests.
 - In next.js for backend API to work properly, we need to export a component named as the methods of request type. For example for `POST` request we need to export a component named `POST`.
 
-#### Add Friend
+#### Friend Request
 
 - Exposes a POST handler.
 - First the body of the request is parsed using `req.json()`

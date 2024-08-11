@@ -26,3 +26,16 @@ The source code is structured under the `src` directory. The `src` directory con
   - [`validations`](./lib/validations/) - contains zod validation functions.
 - [`helpers`](./helpers/) - contains database helper functions.
 - [`types`](./types/) - contains typescript types.
+
+## Middleware
+
+[`middleware.ts`](./middleware.ts)
+
+- In nextjs you introduce a middleware in between by just creating a file named `middleware.ts`
+- Middleware allows you to run code before a request is completed. Then, based on the incoming request, you can modify the response by rewriting, redirecting, modifying the request or response headers, or responding directly.
+- Use `withAuth` function provided by `next-auth/middleware` to protect the routes.
+- We have to export a object named `config` with a field `matcher` which defines the routes at which the middleware should be applied.
+- We are defining sensitive routes in a var `sensitiveRoutes` and determining if the user is accessing a sensitive route or not using `.some()` array method, which returns `true` if any of the elements in the array satisfies the provided testing function.
+- Then we define the conditions for redirection based on the user's authentication status and the route they are trying to access.
+- We use `NextResponse.next()` to pass the request to the next middleware in the stack.
+- In the end we are defining callback function `async authorized()` which next-auth will call to check if the user is authenticated or not. (It's a next-auth specific function)
