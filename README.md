@@ -24,7 +24,7 @@ Live Demo Here
 The source code is structured under the `src` directory. The complete structure is defined in a separate README file under the `src` directory.
 Check out the [source code structure](./src/) for more details.
 
-For detailed documentation about every component, checkout [src/app](./src/app/) and [src/components](./src/components/)
+For detailed documentation about every component, checkout [src/app](./src/app/)
 
 - `__tests__/` -- contains the test files for the application which is written in Jest and React Testing Library.
 - `.devcontainer/` -- contains the devcontainer configuration for the project.
