@@ -13,7 +13,7 @@ const codeData = [
   '{',
   '  "name": "Your name",',
   '  "email": "Your email", ',
-  '  "image": "Your google profile image URL"',
+  '  "image": "profile image URL"',
   '}'
 ]
 
